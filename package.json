@@ -49,7 +49,7 @@
     }
   },
   "peerDependencies": {
-    "komondor": ">5"
+    "komondor": ">=4.8"
   },
   "devDependencies": {
     "@types/jest": "^22.2.2",
@@ -57,7 +57,7 @@
     "assertron": "^4.2.2",
     "dependency-check": "^3.1.0",
     "jest": "^22.4.3",
-    "komondor": "^4.0.1",
+    "komondor": "^4.8.0",
     "power-assert": "^1.5.0",
     "rimraf": "^2.6.2",
     "semantic-release": "^15.1.4",
