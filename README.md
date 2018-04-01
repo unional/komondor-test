@@ -12,7 +12,95 @@
 [![Visual Studio Code][vscode-image]][vscode-url]
 [![Wallaby.js][wallaby-image]][wallaby-url]
 
-Test library for writing plugins of [`komondor`](https://github.com/unional/komondor).
+Test library for writing plugins for [`komondor`](https://github.com/unional/komondor).
+
+## API
+
+`testTrio()`, `testLive()`, `testSave()`, `testSimulate()` has the same signature.
+This allows you to easily switch between them to debug specific issue. e.g.
+
+```ts
+
+// starts with
+testLive('...', (title, spec) => {
+  test.only(title, async () => {
+    // test away
+  })
+})
+
+// change 4 characters 'Live' to 'Save' for saving the result
+testSave('...', ...)
+
+// change `Save` to `Simulate` to valid it works in simulate mode
+testSimulate('...', ...)
+
+// change to `Trio` to run all three
+testTrio('...', ...)
+```
+
+### testTrio([customDescription], specName, handler)
+
+Use `testTrio()` to run all three tests (`live`, `save`, and `simulate`)
+
+```ts
+import { testTrio } from 'komondor-test'
+
+testTrio('node/childProcess/success', (title, spec) => {
+  // `test()` is your test runner: jest, ava, mocha, etc.
+  test(title, async () => {
+    const s = await spec(childProcess)
+    ...
+  })
+})
+```
+
+### testLive([customDescription], specName, handler)
+
+Use `testLive()` to run spec in live mode.
+
+```ts
+import { testLive } from 'komondor-test'
+
+testLive('node/childProcess/success', (title, spec) => {
+  // `test()` is your test runner: jest, ava, mocha, etc.
+  test(title, async () => {
+    const s = await spec(childProcess)
+    ...
+  })
+})
+```
+
+### testSave([customDescription], specName, handler)
+
+Use `testSave()` to run spec in save mode
+
+```ts
+import { testSave } from 'komondor-test'
+
+testSave('node/childProcess/success', (title, spec) => {
+  // `test()` is your test runner: jest, ava, mocha, etc.
+  test(title, async () => {
+    const s = await spec(childProcess)
+    ...
+  })
+})
+```
+
+### testSimulate([customDescription], specName, handler)
+
+Use `testSimulate()` to run spec in simulate mode.
+
+```ts
+import { testSimulate } from 'komondor-test'
+
+testSimulate('node/childProcess/success', (title, spec) => {
+  // `test()` is your test runner: jest, ava, mocha, etc.
+  test(title, async () => {
+    const s = await spec(childProcess)
+    ...
+  })
+})
+```
 
 ## Contribute
 
