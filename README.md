@@ -16,30 +16,32 @@ Test library for writing plugins for [`komondor`](https://github.com/unional/kom
 
 ## API
 
-`testTrio()`, `testLive()`, `testSave()`, `testSimulate()` has the same signature.
+`k.live()`, `k.save()`, `k.simulate()`, `k.trio()` has the same signature.
 This allows you to easily switch between them to debug specific issue. e.g.
 
 ```ts
+import k from 'komondor-test'
 
 // starts with
-testLive('...', (title, spec) => {
+k.live('...', (title, spec) => {
   test.only(title, async () => {
     // test away
   })
 })
 
 // change 4 characters 'Live' to 'Save' for saving the result
-testSave('...', ...)
+k.save('...', ...)
 
 // change `Save` to `Simulate` to valid it works in simulate mode
-testSimulate('...', ...)
+k.simulate('...', ...)
 
 // change to `Trio` to run all three
-testTrio('...', ...)
+k.trio('...', ...)
 ```
 
 ### testTrio([customDescription], specName, handler)
 
+Also exposed as `k.trio()`.
 Use `testTrio()` to run all three tests (`live`, `save`, and `simulate`)
 
 ```ts
@@ -56,6 +58,7 @@ testTrio('node/childProcess/success', (title, spec) => {
 
 ### testLive([customDescription], specName, handler)
 
+Also exposed as `k.live()`.
 Use `testLive()` to run spec in live mode.
 
 ```ts
@@ -72,6 +75,7 @@ testLive('node/childProcess/success', (title, spec) => {
 
 ### testSave([customDescription], specName, handler)
 
+Also exposed as `k.save()`.
 Use `testSave()` to run spec in save mode
 
 ```ts
@@ -88,6 +92,7 @@ testSave('node/childProcess/success', (title, spec) => {
 
 ### testSimulate([customDescription], specName, handler)
 
+Also exposed as `k.simulate()`.
 Use `testSimulate()` to run spec in simulate mode.
 
 ```ts
