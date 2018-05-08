@@ -54,7 +54,7 @@
   "devDependencies": {
     "@types/jest": "^22.2.2",
     "@types/node": "^9.6.1",
-    "assertron": "^4.2.2",
+    "assertron": "^5.0.0",
     "dependency-check": "^3.1.0",
     "eslint": "^4.19.1",
     "eslint-plugin-harmony": "^1.0.3",
