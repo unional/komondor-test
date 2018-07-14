@@ -52,7 +52,7 @@
     "komondor": ">=5.0"
   },
   "devDependencies": {
-    "@types/jest": "^22.2.2",
+    "@types/jest": "^23.1.6",
     "@types/node": "^9.6.1",
     "assertron": "^5.0.0",
     "dependency-check": "^3.1.0",
